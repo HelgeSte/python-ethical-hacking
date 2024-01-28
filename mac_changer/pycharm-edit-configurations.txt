@@ -1,0 +1,3 @@
+Python version: 2.7
+Script: /root/PycharmProjects/regex/mac_changer.py
+Parameters: -i eth0 -m 00:69:00:69:00:00

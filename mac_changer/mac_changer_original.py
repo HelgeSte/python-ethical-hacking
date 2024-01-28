@@ -35,24 +35,19 @@ def get_current_mac(interface):
         print("[-] Could not read MAC address")
 
 
-def main():
-    options = get_argument()
-    interface = options.interface
-    new_mac = options.new_mac
+options = get_argument()
 
-    original_mac = get_current_mac(interface)
-    if options.new_mac != original_mac:
-        print("Changing MAC address")
-        change_mac(interface, new_mac)
-    else:
-        print("No need to change MAC address, since it already got the correct address.")
-    current_mac = get_current_mac(interface)
-    if current_mac == new_mac:
-        print("The MAC for " + interface + " is equal to the argument " + new_mac)
-    else:
-        print(new_mac + " != " + current_mac)
+current_mac = get_current_mac(options.interface)
+print("Current MAC = " + str(current_mac))
+
+change_mac(options.interface, options.new_mac)
+
+current_mac = get_current_mac(options.interface)
+if current_mac == options.new_mac:
+    print("The MAC was successfully changed to " + current_mac)
+else:
+    print("[-] MAC address did not get changed.")
 
 
-if __name__ == "__main__":
-    main()
+
 
